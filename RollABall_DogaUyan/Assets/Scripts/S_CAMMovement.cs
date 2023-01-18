@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class S_CAMMovement : MonoBehaviour
 {
+    public Vector3 top;
     Vector3 origin;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-        origin = gameObject.transform.position;
+        top = GameObject.Find("top").transform.position;
+        origin = transform.position - top;
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void FixedUpdate()
     {
         gameObject.transform.position = origin + GameObject.Find("top").transform.position;
     }
